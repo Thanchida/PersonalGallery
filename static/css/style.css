@@ -1,0 +1,127 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=DM+Serif+Display:ital@0;1&display=swap");
+
+:root {
+  --bg: #f3efe6;
+  --surface: #fffaf0;
+  --surface-strong: #ffeec8;
+  --ink: #1f2a30;
+  --muted: #59656d;
+  --brand: #12664f;
+  --brand-dark: #0c4838;
+  --ring: rgba(18, 102, 79, 0.25);
+}
+
+body {
+  min-height: 100vh;
+  font-family: "Space Grotesk", sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 80% 10%, #f8d99a 0%, rgba(248, 217, 154, 0) 45%),
+    radial-gradient(circle at 15% 85%, #c6e5d5 0%, rgba(198, 229, 213, 0) 40%),
+    var(--bg);
+}
+
+.gallery-navbar {
+  background: rgba(255, 250, 240, 0.85);
+  border-bottom: 1px solid rgba(31, 42, 48, 0.08);
+  backdrop-filter: blur(6px);
+}
+
+.navbar-brand {
+  letter-spacing: 0.4px;
+}
+
+.hero-panel {
+  background: linear-gradient(135deg, #205072 0%, #329d9c 55%, #56c596 100%);
+  color: #ffffff;
+  box-shadow: 0 18px 40px rgba(32, 80, 114, 0.28);
+  animation: fadeInUp 600ms ease-out both;
+}
+
+.eyebrow {
+  letter-spacing: 0.16em;
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
+.intro-copy {
+  max-width: 45rem;
+}
+
+.btn-primary {
+  background: var(--brand);
+  border-color: var(--brand);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background: var(--brand-dark);
+  border-color: var(--brand-dark);
+}
+
+.btn-outline-light {
+  border-width: 2px;
+}
+
+.upload-card,
+.gallery-card,
+.empty-state {
+  background: var(--surface);
+}
+
+.preview-wrapper {
+  background: var(--surface-strong);
+  border: 1px dashed rgba(31, 42, 48, 0.24);
+  border-radius: 1rem;
+  min-height: 220px;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+}
+
+.gallery-image {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+}
+
+.caption-label {
+  font-family: "DM Serif Display", serif;
+  font-size: 1.05rem;
+  color: #9d3c12;
+}
+
+.filename {
+  font-size: 0.86rem;
+  color: var(--muted);
+  word-break: break-word;
+}
+
+.card,
+.preview-wrapper,
+.empty-state,
+.hero-panel {
+  animation: fadeInUp 480ms ease-out both;
+}
+
+.form-control:focus,
+.btn:focus {
+  box-shadow: 0 0 0 0.2rem var(--ring);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 576px) {
+  .gallery-image {
+    height: 210px;
+  }
+}

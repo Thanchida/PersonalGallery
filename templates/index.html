@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+
+{% block title %}Home | Personal Gallery{% endblock %}
+
+{% block content %}
+<section class="hero-panel text-center p-4 p-md-5 rounded-4">
+  <p class="eyebrow mb-2">ML-POWERED IMAGE STORYTELLING</p>
+  <h1 class="display-5 fw-bold mb-3">Your Personal Gallery with Automatic Captions</h1>
+  <p class="lead mx-auto mb-4 intro-copy">
+    Upload your photos and let the BLIP model generate natural language captions
+    in seconds. Build a searchable visual memory from everyday snapshots.
+  </p>
+  <div class="d-flex justify-content-center gap-3 flex-wrap">
+    <a href="{{ url_for('upload_image') }}" class="btn btn-primary btn-lg px-4">Upload Image</a>
+    <a href="{{ url_for('gallery') }}" class="btn btn-outline-light btn-lg px-4">View Gallery</a>
+  </div>
+</section>
+{% endblock %}

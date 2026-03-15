@@ -1,0 +1,66 @@
+{% extends 'layout.html' %}
+
+{% block title %}Upload | Personal Gallery{% endblock %}
+
+{% block content %}
+<section class="row justify-content-center">
+  <div class="col-lg-7">
+    <div class="card upload-card border-0 shadow-sm rounded-4">
+      <div class="card-body p-4 p-md-5">
+        <h2 class="h3 mb-3">Upload a New Image</h2>
+        <p class="text-muted mb-4">
+          Select an image and preview it before submitting. A caption will be generated
+          automatically using Salesforce BLIP.
+        </p>
+
+        <form method="POST" enctype="multipart/form-data">
+          <div class="mb-3">
+            <label for="image" class="form-label">Choose Image</label>
+            <input
+              class="form-control"
+              type="file"
+              id="image"
+              name="image"
+              accept="image/*"
+              required
+            />
+          </div>
+
+          <div class="preview-wrapper mb-4">
+            <img id="imagePreview" src="#" alt="Selected image preview" class="img-fluid d-none rounded-3" />
+            <p id="previewHint" class="text-muted small mb-0">Image preview will appear here.</p>
+          </div>
+
+          <button type="submit" class="btn btn-primary w-100 py-2">Upload and Generate Caption</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  const imageInput = document.getElementById("image");
+  const imagePreview = document.getElementById("imagePreview");
+  const previewHint = document.getElementById("previewHint");
+
+  imageInput.addEventListener("change", (event) => {
+    const [file] = event.target.files;
+    if (!file) {
+      imagePreview.classList.add("d-none");
+      imagePreview.src = "";
+      previewHint.classList.remove("d-none");
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      imagePreview.src = e.target.result;
+      imagePreview.classList.remove("d-none");
+      previewHint.classList.add("d-none");
+    };
+    reader.readAsDataURL(file);
+  });
+</script>
+{% endblock %}
